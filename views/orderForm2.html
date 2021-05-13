@@ -15,10 +15,10 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Select condiments</label>
             <div class="col-sm-4">
-                <repeat group="{{ @conds }}" value="{{ @conds }}">
+                <repeat group="{{ @condiments }}" value="{{ @condiment }}">
                     <label><input type="checkbox"
                                   name="conds[]"
-                                  value="{{ @conds }}"> {{ @conds }}</label><br>
+                                  value="{{ @condiment }}"> {{ @condiment }}</label><br>
                 </repeat>
             </div>
         </div>

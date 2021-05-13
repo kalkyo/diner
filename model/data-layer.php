@@ -8,7 +8,7 @@
 // Get the meals for the order form
 function getMeals()
 {
-    return array('breakfast', 'lunch', 'dinner');
+    return array('breakfast', 'brunch', 'lunch', 'dinner', 'dessert');
 }
 
 function getCondiments()
