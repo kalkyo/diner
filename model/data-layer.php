@@ -13,7 +13,7 @@ function getMeals()
 
 function getCondiments()
 {
-    return array('ketchup', 'mustard', 'sriracha');
+    return array('ketchup', 'mustard', 'mayo', 'sriracha');
 }
 
 /*

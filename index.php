@@ -85,10 +85,32 @@ $f3->route('GET|POST /order1', function($f3){
 
 $f3->route('GET|POST /order2', function($f3){
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $_SESSION['conds'] = implode(", ", $_POST['conds']);
-        header('location: summary');
+    //If the form has ben submitted, validated the data
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        //var_dump($_POST);
+
+        //If condiments are selected
+        if (!empty($_POST['conds']))
+        {
+            //If condiments are valid
+            if (validCondiments($_POST['conds']))
+            {
+                $_SESSION['conds'] = implode(", ", $_POST['conds']);
+            }
+            else {
+                $f3->set('errors["conds"]', 'Invalid selection');
+            }
+        }
+
+        //If the error array is empty, redirect to next page
+        if (empty($f3->get('errors')))
+        {
+            header('location: summary');
+        }
     }
+    // add the data to session
+    // and send the user to the summary page
 
     //Get the data from the model
     $f3->set('condiments', getCondiments());
