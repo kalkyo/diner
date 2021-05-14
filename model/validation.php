@@ -22,10 +22,8 @@ function validCondiments($condiments)
     $validCondiments = getCondiments();
 
     //Make sure each selected condiment is valid
-    foreach ($condiments as $userChoice)
-    {
-        if (!in_array($userChoice, $validCondiments))
-        {
+    foreach ($condiments as $userChoice) {
+        if (!in_array($userChoice, $validCondiments)) {
             return false;
         }
     }
