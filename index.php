@@ -107,12 +107,15 @@ $f3->route('GET|POST /order2', function($f3){
     {
         //var_dump($_POST);
 
-        //Get user input
-        $userConds = $_POST['conds'];
+
 
         //If condiments are selected
-        if (!empty($userConds))
+        if (!empty($_POST['conds']))
         {
+
+            //Get user input
+            $userConds = $_POST['conds'];
+
             //If condiments are valid
             if (validCondiments($userConds))
             {
