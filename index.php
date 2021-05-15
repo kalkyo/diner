@@ -98,18 +98,25 @@ $f3->route('GET|POST /order1', function($f3){
 
 $f3->route('GET|POST /order2', function($f3){
 
+
+    //Initialize variables for user input
+    $userConds = array();
+
     //If the form has ben submitted, validated the data
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         //var_dump($_POST);
 
+        //Get user input
+        $userConds = $_POST['conds'];
+
         //If condiments are selected
-        if (!empty($_POST['conds']))
+        if (!empty($userConds))
         {
             //If condiments are valid
-            if (validCondiments($_POST['conds']))
+            if (validCondiments($userConds))
             {
-                $_SESSION['conds'] = implode(", ", $_POST['conds']);
+                $_SESSION['conds'] = implode(", ", $userConds);
             }
             else {
                 $f3->set('errors["conds"]', 'Invalid selection');
@@ -117,8 +124,7 @@ $f3->route('GET|POST /order2', function($f3){
         }
 
         //If the error array is empty, redirect to next page
-        if (empty($f3->get('errors')))
-        {
+        if (empty($f3->get('errors'))) {
             header('location: summary');
         }
     }
@@ -127,6 +133,9 @@ $f3->route('GET|POST /order2', function($f3){
 
     //Get the data from the model
     $f3->set('condiments', getCondiments());
+
+    //Store the user input in the hive
+    $f3->set('userConds', $userConds);
 
     //Display the second order form
     $view = new Template();
