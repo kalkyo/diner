@@ -28,7 +28,7 @@
 
         <!-- get meal -->
         <div class="form-group">
-            <label class="col-sm-2 control-label">Select a meal CURRENT<!doctype html>
+            <label class="col-sm-2 control-label">Select a meal<!doctype html>
                 <html lang="en">
                 <head>
                     <meta charset="UTF-8">
@@ -47,7 +47,6 @@
                                   id="{{ @meal }}" value="{{ @meal }}"
                                   <check if="{{ @meal == @userMeal }}">checked="checked"</check>
                         > {{ ucfirst(@meal) }}
-                        </input>
                     </label><br>
                 </repeat>
                 <!-- display an error message for meal if there is one -->
